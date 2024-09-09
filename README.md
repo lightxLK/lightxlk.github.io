@@ -1,0 +1,2 @@
+# lightxlk.github.io
+[ REDIRECTION 🌟 ]  
