@@ -1,0 +1,230 @@
+\documentclass[a4paper,10pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{fontawesome5} % For icons
+\usepackage{qrcode}       % Required for generating QR codes
+
+%----------------------------------------------------------------------------------------
+%	FORMATTING
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+% Fix for fancyhdr warning: footskip is too small
+\setlength{\footskip}{5pt}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%----------------------------------------------------------------------------------------
+%	RESUME STARTS HERE
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Lokesh Patra} \\ \vspace{10pt}
+    \faPhone\ \href{tel:+918249836567}+91 8249 83 6567 \hspace{1pt} $|$ \hspace{1pt} 
+    \faEnvelope\ \href{mailto:lokesh0patra@gmail.com}{lokesh0patra@gmail.com} \hspace{1pt} $|$ \hspace{1pt} 
+    \faLinkedin\ \href{https://linkedin.com/in/lokeshxlight}{linkedin.com/in/lokeshxlight} \hspace{1pt} $|$ \hspace{1pt} 
+    \faGithub\ \href{https://github.com/lightxlk}{github.com/lightxlk} \hspace{1pt} \hspace{1pt}
+    \vspace{2pt}
+    \small Cuttack, Odisha, India
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Sri Sri University}{Cuttack, India}
+      {Baccalaureus Technologiae in CSE w/ Specialization in Data Science} {Nov 2022 -- Jul 2026}
+    \resumeSubheading
+      {Stewart's Science Higher Secondary School}{Cuttack, India}
+      {Intermediate Science} {Aug 2020 -- Apr 2022}
+  \resumeSubHeadingListEnd
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{IEEE Xplore} $|$ \emph{6th Int. Conf. on Emerging Systems and Intelligent Computing (ESIC '26)}}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Paper Title:} Roadkill Hotspots and Policy Advocacy (RHPA): A Multi-Layered AI and IoT Approach for Real-Time Wildlife Preservation.}
+        \resumeItem{\textbf{Paper ID:} 1197 $|$ \textbf{Achievement:} Awarded \textbf{1st Rank of Session}}
+        \resumeItem{Developed a 3-Dimensional framework combining Computer Vision (YOLOv5xu), Ensemble Deep Learning (DenseNet121 + EfficientNet-B3), and IoT to reduce wildlife-vehicle collisions.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Indian Space Research Organization, Space Application Center}{Ahmedabad, India}
+      {Research Scholar (BioSentinel Edge Project)}{June 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Engineered an Edge-AI vision system for low-power, real-time facial recognition achieving \textbf{$<$500ms latency} and \textbf{$<$2W power} consumption.}
+        \resumeItem{Optimized embedded inference using \textbf{TensorFlow Lite} and \textbf{MobileFaceNet (INT8)} on \textbf{ESP32} hardware.}
+        \resumeItem{Developed a modular backend using \textbf{FastAPI} and \textbf{Faiss} vector search, implementing a hybrid cloud-edge architecture.}
+        \resumeItem{Utilized 100\% GAN-based synthetic datasets for training to ensure zero biometric storage and strict privacy compliance.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {TSA Media Pvt. Ltd.}{Cuttack, India}
+      {Associate SaaS Developer}{February 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Spearheaded the development of SaaS/Micro-SaaS platforms featuring interactive Web 3.0 interfaces.}
+        \resumeItem{Drove product growth from \textbf{10\% to 45\% monthly} through the implementation of ML-driven insights and architectural enhancements.}
+        \resumeItem{Built predictive models and geospatial analytics pipelines, streamlining client operations via custom API backends.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {HackerRank}{Remote}
+      {Software Engineering Intern}{July 2024 -- September 2024}
+      \resumeItemListStart
+        \resumeItem{Contributed to production-level codebases adhering to strict SDLC standards and CI/CD workflows.}
+        \resumeItem{Collaborated on code reviews and version control using Git, improving module maintainability and debugging complex issues.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Microsoft}{Remote}
+      {Azure Intern}{January 2024 -- May 2024}
+      \resumeItemListStart
+        \resumeItem{Designed large-scale data pipelines using the \textbf{Azure ecosystem}, performing ETL operations and data governance compliance.}
+        \resumeItem{Developed algorithms to generate actionable insights from high-volume datasets.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {TCS Academy}{Remote}
+      {MasterCraft Intern}{June 2024}
+      \resumeItemListStart
+        \resumeItem{Implemented data validation workflows and quality gates, enhancing system traceability and test data reliability.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {\textbf{BioSentinel Edge} $|$ \emph{Python, TensorFlow Lite, ESP32, FastAPI, React}}{}
+      \resumeItemListStart
+        \resumeItem{Built a real-time, ethical embedded facial recognition system running on microcontrollers with \textbf{$<$1MB RAM} usage.}
+        \resumeItem{Logged \textbf{120+ identities} and \textbf{300+ real-time events} during production testing using hybrid edge-cloud architecture.}
+        \resumeItem{Completed 7-phase development sprints covering ML, backend, frontend, and embedded optimization.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Roadkill Hotspots \& Policy Advocacy (RHPA)} $|$ \emph{YOLOv5xu, DenseNet121, IoT, MQTT}}{}
+      \resumeItemListStart
+        \resumeItem{Designed a multi-layer AI + IoT system achieving \textbf{95\% overall system accuracy} (93\% detection, 97.5\% classification).}
+        \resumeItem{Trained YOLOv5xu on \textbf{20,000+ annotated frames} and an ensemble of DenseNet121/EfficientNet-B3 to distinguish 'Alive' vs 'Dead' subjects.}
+        \resumeItem{Deployed ESP32-based actuation layer with ultrasonic sensors achieving \textbf{$<$0.5s alert response time}.}
+        \resumeItem{Pilot testing indicated a \textbf{36\% reduction} in animal-vehicle collisions and achieved \textbf{92\% hotspot overlap} with reported incidents.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Predictive Geospatial Intelligence System} $|$ \emph{Cloud APIs, Geospatial Analytics}}{}
+      \resumeItemListStart
+        \resumeItem{Built location-aware ML models for client applications using geospatial datasets for route scoring and event prediction.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, SQL, LaTex, ABAP, HTML/CSS, React} \\
+     \textbf{Machine Learning}{: TensorFlow, PyTorch, YOLOv5xu, OpenCV, Scikit-Learn, Pandas, NumPy, GANs} \\
+     \textbf{Backend \& Cloud}{: SAP ABAP Cloud, FastAPI, Flask, Docker, REST APIs, Microsoft Azure, AWS} \\
+     \textbf{Hardware/IoT}{: ESP32, Embedded Inference (TinyML), Sensors (Ultrasonic/DHT), MQTT} \\
+     \textbf{Tools}{: Git, GitHub, CI/CD, Matplotlib, Seaborn, Jupyter}
+    }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS & AWARDS-----------
+\section{Certifications \& Awards}
+  \resumeSubHeadingListStart
+    \resumeItem{\textbf{SAP Certified Associate - Back-End Developer - ABAP Cloud} \hfill \textit{Issued: Nov 2025}}
+    \vspace{-2pt}
+    \resumeItem{\small Validates ABAP RESTful Application Programming Model on SAP BTP and S/4HANA Cloud extensions.}
+    \vspace{2pt}
+    \resumeItem{\textbf{1st Winner} -- IBM Innovation Center for Education '25}
+    \resumeItem{\textbf{1st Runner-Up} -- IBM Innovation Center for Education '24}
+    \resumeItem{\textbf{1st Runner-Up} -- OpenWeaver Sentiment Analysis Makeathon}
+    \resumeItem{\textbf{Certified Software Engineering Intern} -- HackerRank}
+  \resumeSubHeadingListEnd
+
+%-----------QR CODE-----------
+% Pushes the QR code to the bottom of the page
+\vfill 
+
+\begin{center}
+    \qrcode[height=2cm]{https://linktr.ee/lightxlt} \\
+    \vspace{5pt}
+    \tiny \textit{Thank You}
+\end{center}
+
+\end{document}
