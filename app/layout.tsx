@@ -1,5 +1,6 @@
 import AudioControls from "./components/common/AudioControls";
 import SecurityControls from "./components/common/SecurityControls";
+import MobileMessage from "./components/common/MobileMessage";
 
 import type { Metadata, Viewport } from "next";
 import localFont from 'next/font/local';
@@ -96,6 +97,7 @@ export default function RootLayout({
         {children}
         <AudioControls />
         <SecurityControls />
+        <MobileMessage />
 
 
       </body>

@@ -3,11 +3,17 @@
 import { useVaultStore } from "@stores";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { useIsMobile } from "../../hooks/useIsMobile";
+
 
 const AudioControls = () => {
     const { isMuted, toggleMute } = useVaultStore();
+    const isMobile = useIsMobile();
     const audioRef = useRef<HTMLAudioElement>(null);
+
+
     const [hasInteracted, setHasInteracted] = useState(false);
+
 
     // Initial play on FIRST interaction
     useEffect(() => {
@@ -72,6 +78,8 @@ const AudioControls = () => {
             gsap.to(audioRef.current, { volume: 0.5, duration: 0.5, ease: "power1.out" });
         }
     };
+
+    if (isMobile) return null;
 
     return (
         <div className="fixed top-8 left-8 z-50 flex items-center justify-center">
