@@ -1,8 +1,8 @@
 'use client';
 
 import { useGSAP } from "@gsap/react";
-import { AdaptiveDpr, Preload, ScrollControls, useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { AdaptiveDpr, Preload, ScrollControls, useProgress } from "@react-three/drei";
 import gsap from "gsap";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useThemeStore } from "@stores";
@@ -29,6 +29,10 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
     right: 0,
     opacity: 0,
     overflow: "hidden",
+    backgroundBlendMode: "soft-light",
+    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E\")",
+    backgroundRepeat: "repeat",
+    backgroundSize: "100px",
   });
 
   useEffect(() => {
@@ -38,7 +42,7 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
         width: 'calc(100% - 2rem)',
         height: 'calc(100% - 2rem)',
       };
-      setCanvasStyle({ ...canvasStyle, ...borderStyle})
+      setCanvasStyle(prev => ({ ...prev, ...borderStyle }));
     }
   }, [isMobile]);
 
@@ -53,19 +57,12 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
       backgroundColor: backgroundColor,
       duration: 1,
     });
+    // Just apply background color via GSAP, but don't re-animate the static noise texture.
     gsap.to(canvasRef.current, {
       backgroundColor: backgroundColor,
       duration: 1,
-      ...noiseOverlayStyle,
     });
   }, [backgroundColor]);
-
-  const noiseOverlayStyle = {
-    backgroundBlendMode: "soft-light",
-    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E\")",
-    backgroundRepeat: "repeat",
-    backgroundSize: "100px",
-  };
 
   return (
     <div className="h-[100dvh] wrapper relative">

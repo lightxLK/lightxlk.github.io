@@ -1,5 +1,5 @@
 import { Box, Edges, Line, Text, TextProps } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree, RootState } from "@react-three/fiber";
 import { usePortalStore } from "@stores";
 import gsap from "gsap";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -87,7 +87,7 @@ const Timeline = ({ progress }: { progress: number }) => {
   const [visibleDashedCurvePoints, setVisibleDashedCurvePoints] = useState<THREE.Vector3[]>([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  useFrame((_, delta) => {
+  useFrame((state: RootState, delta: number) => {
     if (isActive) {
       const position = curve.getPoint(progress);
       camera.position.x = THREE.MathUtils.damp(camera.position.x, (isMobile ? -1 : -2) + position.x, 4, delta);

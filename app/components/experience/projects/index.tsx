@@ -1,5 +1,5 @@
 import { useScroll } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree, RootState } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect } from "react";
 import { useIsMobile } from "../../../hooks/useIsMobile";
@@ -27,7 +27,7 @@ const Projects = () => {
     }
   }, [isActive]);
 
-  useFrame((state, delta) => {
+  useFrame((state: RootState, delta: number) => {
     if (isActive) {
       if (!isMobile) {
         camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, -(state.pointer.x * Math.PI) / 4, 0.03);

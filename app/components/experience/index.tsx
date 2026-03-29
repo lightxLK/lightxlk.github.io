@@ -1,5 +1,5 @@
 import { Text, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, RootState } from "@react-three/fiber";
 import { usePortalStore } from "@stores";
 import { useRef } from "react";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -21,7 +21,7 @@ const Experience = () => {
     color: 'white',
   };
 
-  useFrame((sate, delta) => {
+  useFrame((state: RootState, delta: number) => {
     const d = data.range(0.8, 0.2);
     const e = data.range(0.7, 0.2);
 

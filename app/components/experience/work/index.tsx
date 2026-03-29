@@ -25,15 +25,18 @@ const Work = () => {
     if (isActive) {
       const scrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
       const originalScrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
-      setScrollProgress(0);
-      scrollWrapper.addEventListener('scroll', handleScroll)
-      scrollWrapper.style.zIndex = '1';
-      originalScrollWrapper.style.zIndex = '-1';
+      
+      if (scrollWrapper && originalScrollWrapper) {
+        setScrollProgress(0);
+        scrollWrapper.addEventListener('scroll', handleScroll);
+        scrollWrapper.style.zIndex = '1';
+        originalScrollWrapper.style.zIndex = '-1';
+      }
     } else {
       const scrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
       const originalScrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
 
-      if (scrollWrapper) {
+      if (scrollWrapper && originalScrollWrapper) {
         scrollWrapper.scrollTo({ top: 0, behavior: 'smooth' });
         setScrollProgress(0);
         scrollWrapper.removeEventListener('scroll', handleScroll);

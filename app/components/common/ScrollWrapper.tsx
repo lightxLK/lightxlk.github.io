@@ -1,7 +1,7 @@
 'use client';
 
 import { useScroll } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree, RootState } from "@react-three/fiber";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import * as THREE from "three";
 import { usePortalStore, useScrollStore } from "@stores";
@@ -13,7 +13,7 @@ const ScrollWrapper = (props: { children: React.ReactNode | React.ReactNode[]}) 
   const isActive = usePortalStore((state) => !!state.activePortalId);
   const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
 
-  useFrame((state, delta) => {
+  useFrame((state: RootState, delta: number) => {
     if (data) {
       const a = data.range(0, 0.3);
       const b = data.range(0.3, 0.5);
