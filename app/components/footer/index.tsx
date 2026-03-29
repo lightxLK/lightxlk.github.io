@@ -2,12 +2,12 @@ import { Svg, Text, useCursor, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { isMobile } from "react-device-detect";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import * as THREE from "three";
 import { FOOTER_LINKS } from "../../constants";
 import { FooterLink } from "../../types";
 
-const FooterLinkItem = ({ link }: { link: FooterLink }) => {
+const FooterLinkItem = ({ link, isMobile }: { link: FooterLink, isMobile: boolean }) => {
   const textRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
   const onPointerOver = () => setHovered(true);
@@ -85,6 +85,7 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
 }
 
 const Footer = () => {
+  const isMobile = useIsMobile();
   const groupRef = useRef<THREE.Group>(null);
   const data = useScroll();
 
@@ -99,7 +100,7 @@ const Footer = () => {
     return FOOTER_LINKS.map((link, i) => {
       return (
         <group key={i} position={[i * (isMobile ? 1.1 : 2), 0, 0]}>
-          <FooterLinkItem link={link}/>
+          <FooterLinkItem link={link} isMobile={isMobile}/>
         </group>
       );
     });

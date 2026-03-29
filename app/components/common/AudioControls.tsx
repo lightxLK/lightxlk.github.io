@@ -9,27 +9,31 @@ const AudioControls = () => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [hasInteracted, setHasInteracted] = useState(false);
 
-    // Initial play on FIRST interaction (click or scroll)
+    // Initial play on FIRST interaction
     useEffect(() => {
         const startAudio = () => {
             if (!hasInteracted && audioRef.current) {
-                audioRef.current.play().catch(() => {});
-                setHasInteracted(true);
-                // Remove listeners after first interaction
-                window.removeEventListener('click', startAudio);
-                window.removeEventListener('touchstart', startAudio);
-                window.removeEventListener('scroll', startAudio);
+                // We wrap it in a promise check to handle the browser's sync play requirement
+                const playPromise = audioRef.current.play();
+                if (playPromise !== undefined) {
+                    playPromise
+                        .then(() => {
+                            setHasInteracted(true);
+                            const events = ['click', 'touchstart', 'mousedown', 'keydown'];
+                            events.forEach(event => window.removeEventListener(event, startAudio));
+                        })
+                        .catch(error => {
+                            console.log("Autoplay prevented, waiting for stronger interaction:", error);
+                        });
+                }
             }
         };
 
-        window.addEventListener('click', startAudio);
-        window.addEventListener('touchstart', startAudio);
-        window.addEventListener('scroll', startAudio);
+        const events = ['click', 'touchstart', 'mousedown', 'keydown'];
+        events.forEach(event => window.addEventListener(event, startAudio));
 
         return () => {
-            window.removeEventListener('click', startAudio);
-            window.removeEventListener('touchstart', startAudio);
-            window.removeEventListener('scroll', startAudio);
+            events.forEach(event => window.removeEventListener(event, startAudio));
         };
     }, [hasInteracted]);
 
@@ -51,7 +55,7 @@ const AudioControls = () => {
     const handleTimeUpdate = () => {
         if (!audioRef.current) return;
         const audio = audioRef.current;
-        const fadeOutTime = 1.5;
+        const fadeOutTime = 0.1; // Minimal fade to prevent pops
 
         // If near end of track, fade out and loop
         if (audio.currentTime > audio.duration - fadeOutTime && !isMuted) {
@@ -64,7 +68,8 @@ const AudioControls = () => {
         audioRef.current.currentTime = 0;
         audioRef.current.play();
         if (!isMuted) {
-            gsap.to(audioRef.current, { volume: 0.5, duration: 1.5, ease: "power2.out" });
+            // Faster fade in (0.5s) for a more seamless feel
+            gsap.to(audioRef.current, { volume: 0.5, duration: 0.5, ease: "power1.out" });
         }
     };
 
