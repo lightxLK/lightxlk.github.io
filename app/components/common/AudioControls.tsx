@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 
 const AudioControls = () => {
-    const { isMuted, toggleMute, setMuted } = useVaultStore();
+    const { isMuted, toggleMute } = useVaultStore();
     const audioRef = useRef<HTMLAudioElement>(null);
     const [hasInteracted, setHasInteracted] = useState(false);
 

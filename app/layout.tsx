@@ -1,5 +1,4 @@
 import AudioControls from "./components/common/AudioControls";
-import CanvasLoader from "./components/common/CanvasLoader";
 import SecurityControls from "./components/common/SecurityControls";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
