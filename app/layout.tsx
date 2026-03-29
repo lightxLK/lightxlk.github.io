@@ -1,8 +1,9 @@
 import AudioControls from "./components/common/AudioControls";
 import SecurityControls from "./components/common/SecurityControls";
-import { GoogleAnalytics } from "@next/third-parties/google";
+
 import type { Metadata, Viewport } from "next";
 import localFont from 'next/font/local';
+import Script from "next/script";
 import "./globals.css";
 
 const soriaFont = localFont({
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     description: "Engineer by profession, Thinker at heart.",
   },
   verification: {
-    google: "GsRYY-ivL0F_VKkfs5KAeToliqz0gCrRAJKKmFkAxBA",
+    google: "e4_H-qo2KANrVThYHbdxqScXu_bONS_logrBVk8MYuE",
   },
 };
 
@@ -69,14 +70,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overscroll-y-none">
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-M5M5QQZ6QK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-M5M5QQZ6QK');
+          `}
+        </Script>
+
+      </head>
       <body
         className={`${soriaFont.variable} ${vercettiFont.variable} font-sans antialiased`}
       >
+
+
         {children}
         <AudioControls />
         <SecurityControls />
+
+
       </body>
-      <GoogleAnalytics gaId={'G-7WD4HM3XRE'} />
     </html>
   );
 }

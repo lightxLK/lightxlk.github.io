@@ -7,11 +7,11 @@ interface Theme {
 }
 
 const AvailableThemes: Theme[] = [{
-  type: 'light',
-  color: '#0690d4'
-}, {
   type: 'dark',
   color: '#111'
+}, {
+  type: 'light',
+  color: '#0690d4'
 }];
 
 interface ThemeStore {
@@ -24,7 +24,7 @@ export const useThemeStore = create<ThemeStore>()(
   persist(
     (set, get) => ({
       themes: [...AvailableThemes],
-      theme: AvailableThemes[1],
+      theme: AvailableThemes[0],
       nextTheme: () => {
         const themes = get().themes;
         const activeThemeIndex = themes.findIndex(theme => theme.type === get().theme.type);
