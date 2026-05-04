@@ -2,7 +2,7 @@
 
 A modern, high-performance 3D portfolio website built with Next.js 15 and React Three Fiber.
 
----
+![Site Logo](https://github.com/lightxLK/lightxlk.github.io/blob/main/public/site-logo.png?raw=true)
 
 ## Technology Stack
 
