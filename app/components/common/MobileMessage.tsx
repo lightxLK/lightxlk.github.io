@@ -10,7 +10,13 @@ const MobileMessage = () => {
 
   useEffect(() => {
     // Only show if mobile and hasn't been dismissed in this session
-    const isDismissed = sessionStorage.getItem('mobile-message-dismissed');
+    let isDismissed = false;
+    try {
+      isDismissed = sessionStorage.getItem('mobile-message-dismissed') === 'true';
+    } catch (e) {
+      // Ignore if sessionStorage is not accessible
+    }
+    
     if (isMobile && !isDismissed) {
       setShow(true);
     }
@@ -18,7 +24,11 @@ const MobileMessage = () => {
 
   const handleDismiss = () => {
     setShow(false);
-    sessionStorage.setItem('mobile-message-dismissed', 'true');
+    try {
+      sessionStorage.setItem('mobile-message-dismissed', 'true');
+    } catch (e) {
+      // Ignore if sessionStorage is not accessible
+    }
   };
 
   if (!show) return null;
