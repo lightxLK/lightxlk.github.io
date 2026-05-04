@@ -13,7 +13,7 @@ const MobileMessage = () => {
     let isDismissed = false;
     try {
       isDismissed = sessionStorage.getItem('mobile-message-dismissed') === 'true';
-    } catch (e) {
+    } catch {
       // Ignore if sessionStorage is not accessible
     }
     
@@ -26,7 +26,7 @@ const MobileMessage = () => {
     setShow(false);
     try {
       sessionStorage.setItem('mobile-message-dismissed', 'true');
-    } catch (e) {
+    } catch {
       // Ignore if sessionStorage is not accessible
     }
   };
