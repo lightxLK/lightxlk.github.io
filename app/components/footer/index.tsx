@@ -27,6 +27,7 @@ const FooterLinkItem = ({ link, isMobile }: { link: FooterLink, isMobile: boolea
     font: "./Vercetti-Regular.woff",
     fontSize: 0.2,
     color: 'white',
+    gpuAccelerateSDF: false,
     onPointerOver,
     onPointerMove,
     onPointerOut,

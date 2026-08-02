@@ -128,8 +128,9 @@ const GridTile = (props: GridTileProps) => {
     document.body.removeEventListener('keydown', handleEscape);
   }
 
-  const fontProps: Partial<TextProps> = {
+  const fontProps: Partial<TextProps> & { gpuAccelerateSDF?: boolean } = {
     font: "./soria-font.ttf",
+    gpuAccelerateSDF: false,
     maxWidth: 2,
     anchorX: 'center',
     anchorY: 'bottom',

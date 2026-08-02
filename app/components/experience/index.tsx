@@ -19,6 +19,7 @@ const Experience = () => {
     font: "./soria-font.ttf",
     fontSize: 0.4,
     color: 'white',
+    gpuAccelerateSDF: false,
   };
 
   useFrame((state: RootState, delta: number) => {

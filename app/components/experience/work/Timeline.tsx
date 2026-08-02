@@ -23,9 +23,10 @@ const TimelinePoint = ({ point, diff, isMobile }: { point: WorkTimelinePoint, di
 
   const textAlign = point.position === 'left' ? 'right' : 'left';
 
-  const textProps: Partial<TextProps> = useMemo(() => ({
+  const textProps: Partial<TextProps> & { gpuAccelerateSDF?: boolean } = useMemo(() => ({
     font: "./Vercetti-Regular.woff",
     color: "white",
+    gpuAccelerateSDF: false,
     anchorX: textAlign,
     fillOpacity: 2 - 2 * diff,
     outlineWidth: 0.012,

@@ -31,6 +31,7 @@ const Hero = () => {
   const fontProps = {
     font: "./soria-font.ttf",
     fontSize: 1.2,
+    gpuAccelerateSDF: false,
   };
 
   return (

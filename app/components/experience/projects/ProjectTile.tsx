@@ -27,11 +27,13 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
   const titleProps = useMemo(() => ({
     font: "./soria-font.ttf",
     color: "black",
+    gpuAccelerateSDF: false,
   }), []);
 
-  const subtitleProps: Partial<TextProps> = useMemo(() => ({
+  const subtitleProps: Partial<TextProps> & { gpuAccelerateSDF?: boolean } = useMemo(() => ({
     font: "./Vercetti-Regular.woff",
     color: "black",
+    gpuAccelerateSDF: false,
     anchorX: "left",
     anchorY: "top",
   }), []);
